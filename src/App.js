@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect } from 'react'
+import { fb } from "./firebase"
+import { Route, Switch } from 'react-router-dom'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+import Signup from "./screens/Signup"
+import Chat from "./screens/Chat"
+import Login from "./screens/Login"
+
+import "./App.css"
+
+const App = () => {
+    
+    useEffect(() => {
+        
+    }, [])
+
+    return (
+        <Switch>
+            <Route path="/" exact component={Chat} />
+            <Route path="/signup" component={Signup} />
+            <Route path="/login" component={Login} />
+        </Switch>
+    )
 }
 
-export default App;
+export default App
