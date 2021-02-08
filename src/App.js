@@ -15,15 +15,15 @@ const App = () => {
     const authResolved = useResolved(authUser)
     
     useEffect(() => {
-        fetch("/api/createUser", {
-            method: "POST",
-            headers: {
-                "Content-Type": "Application/json"
-            },
-            body: JSON.stringify({
-                displayName: "NOOGMAS",
-                userId: "7873o8usmUV53nDhuMLY98g66un2"
-            })
+        fetch("/api", {
+            method: "GET",
+            // headers: {
+            //     "Content-Type": "Application/json"
+            // },
+            // body: JSON.stringify({
+            //     displayName: "NOOGMAS",
+            //     userId: "7873o8usmUV53nDhuMLY98g66un2"
+            // })
         }).then(() => {
             console.log("done!")
         }).catch((err) => {
