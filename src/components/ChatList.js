@@ -46,6 +46,9 @@ const ChatList = () => {
                         )
                         }
                     </div>
+                    <div onClick={() => deleteChatClick(chat)} className="chat-item-delete">
+                        <Icon name="delete" />
+                    </div>
                 </div>
     ))}
         </div>

@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { ChatEngine, getChats } from 'react-chat-engine'
+import ChatToolBar from '../components/ChatToolBar'
 import LeftRail from '../components/LeftRail'
 import { useChat } from '../context/ChatContext'
 
@@ -24,7 +25,10 @@ const Chat = () => {
 
             <div className="chat-container">
                 <div className="current-chat">
-                    {selectedChat ? <></> 
+                    {selectedChat ? 
+                    <div className="chat">
+                        <ChatToolBar />
+                    </div>
                     : 
                     <div className="no-chat-selected">
                         <img src="/img/nochats.png" className="point-left" alt="no-chats"/> Select A Chat You Stupid Cunt
