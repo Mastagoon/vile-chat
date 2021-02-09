@@ -3,6 +3,7 @@ import { sendMessage } from 'react-chat-engine'
 import { Icon } from 'semantic-ui-react'
 import { useChat } from '../context/ChatContext'
 import ImageUpload from './ImageUpload'
+import getInsult from "insults"
 
 const ChatInput = () => {
 
@@ -40,7 +41,7 @@ const ChatInput = () => {
             }}>
                 <Icon name="attach" color="grey" />
             </div>
-            <input value={chatInputText} className="chat-input" placeholder="You're a mistake" onKeyPress={e => {
+            <input value={chatInputText} className="chat-input" placeholder={getInsult()} onKeyPress={e => {
                 if(e.key === "Enter") sendChatMessage()
             }}
             onChange={e => setChatInputText(e.target.value)}

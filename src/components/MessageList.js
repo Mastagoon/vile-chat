@@ -15,13 +15,17 @@ const MessageList = () => {
             {selectedChat.messages.length ? (
                 groupMessages(selectedChat.messages).map((message, index) => (
                     <div key={index} className={`${message[0].sender.username === chatConfig.userName ? 'self-chat-messages': 'chat-message'}`}>
-                        {message[0].sender.username !== chatConfig.userName && <div className="chat-message-header">
+                        {message[0].sender.username !== chatConfig.userName && <> <div className="chat-message-header">
                             <ChatAvatar className="message-avatar" username={message[0].sender.username} chat={selectedChat} />
                             <div className="message-author">{message[0].sender.username}</div>
-                        </div>}
+                        </div>
+                            {/* <hr /> */}
+                        </>
+                        }
                         <div className="message-content">
                             {message.map((individualMessage, index) => (
                                 <div key={index}>
+                                    {index > 0 && <hr className={`${message[0].sender.username === chatConfig.userName ? 'self-message-seperator': 'message-seperator'}`}/>}
                                     <div className="message-text">{individualMessage.text}</div>    
                                     {individualMessage.attachments.length ? (<img className="message-image" src={individualMessage.attachments[0].file} alt={individualMessage.id+"attachment"} />) : ""}
                                 </div>

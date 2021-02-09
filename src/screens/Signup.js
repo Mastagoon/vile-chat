@@ -4,6 +4,7 @@ import FormField from "../components/FormField"
 import { Form, Formik } from "formik"
 import { signupDefaultValues, signupValidationSchema } from "../validation/formikConfig"
 import { fb } from '../firebase'
+import getInsult from "insults"
 
 const Signup = () => {
     const history = useHistory()
@@ -39,7 +40,8 @@ const Signup = () => {
 
     return (
         <div className="auth-form">
-            <h1>Signup</h1>
+            <h1 className="text-center">Signup</h1>
+            <h3 className="text-center">{`${getInsult()}`}</h3>
             <Formik
                 onSubmit={signup}
                 validateOnMount={true}

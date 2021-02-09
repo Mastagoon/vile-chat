@@ -4,6 +4,7 @@ import { useState } from 'react'
 import FormField from '../components/FormField'
 import { loginDefaultValues, loginValidationSchema } from '../validation/formikConfig'
 import { fb } from '../firebase'
+import getInsult from "insults"
 
 const Login = () => {
 
@@ -26,7 +27,8 @@ const Login = () => {
 
     return (
         <div className="auth-form">
-            <h1>Login</h1>
+            <h1 className="text-center">Login</h1>
+            <h3 className="text-center">{`${getInsult()}`}</h3>
             <Formik
                 onSubmit={login}
                 validateOnMount={true}
