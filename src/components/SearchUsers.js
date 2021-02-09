@@ -33,7 +33,7 @@ const SearchUsers = ({ visible, closeFn }) => {
                 people: [...selectedChat.people, {person: { username }}]
             }
             setSelectedChat(updatedChat)
-            setMyChats([...filteredChats, updatedChat])
+            setMyChats([updatedChat, ...filteredChats])
             closeFn()
         })
     })

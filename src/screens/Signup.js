@@ -48,7 +48,7 @@ const Signup = () => {
             >
                 {({ isValid, isSubmitting }) => (
                     <Form>
-                        <FormField name="displayName" label="Display Name" /> 
+                        <FormField name="displayName" label="Username" /> 
                         <FormField name="email" label="Email Address" type="email" />
                         <FormField name="password" label="Password" type="password" />
                         <FormField name="confirmPassword" label="Confirm Password" type="password" />

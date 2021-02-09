@@ -1,7 +1,9 @@
 import React, { useEffect } from 'react'
 import { ChatEngine, getChats } from 'react-chat-engine'
+import ChatInput from '../components/ChatInput'
 import ChatToolBar from '../components/ChatToolBar'
 import LeftRail from '../components/LeftRail'
+import MessageList from '../components/MessageList'
 import { useChat } from '../context/ChatContext'
 
 const Chat = () => {
@@ -22,13 +24,28 @@ const Chat = () => {
                     }}
                     onNewChat={(chat) => {
                         if(chat.admin.username === chatConfig.userName) selectChatClick(chat)
-                        setMyChats([...myChats, chat].sort((a, b) => a.id - b.id))
-                        console.log("chat added.")
+                        setMyChats([chat, ...myChats])
                     }}
                     onDeleteChat={(chat) => {
                         if(selectedChat?.id === chat.id) setSelectedChat(null)
-                        setMyChats(myChats.filter(c => c.id !== chat.id).sort((a, b) => a.id - b.id))
-                        console.log("chat deleted.")
+                        setMyChats(myChats.filter(c => c.id !== chat.id))
+                    }}
+                    onNewMessage={(chatId, message) => {
+                        if(selectedChat && chatId === selectedChat.id) {
+                            setSelectedChat({
+                                ...selectedChat,
+                                messages: [...selectedChat.messages, message]
+                            })
+                        }
+                        const chatThatMessageBelongsTo = myChats.find(c => c.id === chatId)
+                        const filteredChats = myChats.filter(c => c.id !== chatId)
+                        const updatedChat = {
+                            ...chatThatMessageBelongsTo,
+                            last_message: message
+                        }
+                        setMyChats(
+                            [updatedChat, ...filteredChats]
+                        )
                     }}
                 />
             )}
@@ -38,6 +55,8 @@ const Chat = () => {
                     {selectedChat ? 
                     <div className="chat">
                         <ChatToolBar />
+                        <MessageList />
+                        <ChatInput />
                     </div>
                     : 
                     <div className="no-chat-selected">

@@ -22,7 +22,7 @@ const ChatAvatar = ({ chat, username, className }) => {
     :
     (
         <div className={className || `empty-avatar`}>
-            {notMe(chatConfig, chat)[0].toUpperCase()}
+            {username[0].toUpperCase()}
         </div>
     )
 }

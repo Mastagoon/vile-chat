@@ -29,7 +29,7 @@ const ChatList = () => {
                                 <div className="chat-list-preview">
                                     <div className="preview-username">{notMe(chatConfig, chat)}</div>
                                     <div className="preview-message">
-                                        {chat.lastMessage ? chat.lastMessage.attachments?.length ? `${chat.lastMessage.sender.username} sent an attachment` : chat.lastMessage.text.slice(0,50)+"..." : "New Chat!"}
+                                        {chat.last_message.text ? chat.last_message.attachments?.length ? `${chat.last_message.sender.username} sent an attachment` : chat.last_message.sender.username === chatConfig.userName ? `You: ${chat.last_message.text.slice(0,50)}...` : `${chat.last_message.text.slice(0,50)}...` : "New Chat!"}
                                     </div>
                                 </div>
                             </>
@@ -38,9 +38,11 @@ const ChatList = () => {
                         (
                             <>
                                 <Icon circular inverted color="brown" name="users" />
-                                <div className="preview-username">{joinUserNames(chat.people, chatConfig.userName).slice(0,50)+"..."}</div>
-                                <div className="preview-message">
-                                    {chat.lastMessage ? chat.lastMessage.attachments?.length ? `${chat.lastMessage.sender.username} sent an attachment` : chat.lastMessage.text.slice(0,50)+"..." : "New Chat!"}
+                                <div className="chat-list-preview">
+                                    <div className="preview-username">{chat.title ? chat.title : joinUserNames(chat.people, chatConfig.userName).slice(0,50)+"..."}</div>
+                                    <div className="preview-message">
+                                        {chat.last_message.text ? chat.last_message.attachments?.length ? `${chat.last_message.sender.username} sent an attachment` : chat.last_message.sender.username === chatConfig.userName ? `You: ${chat.last_message.text.slice(0,50)}...` : `${chat.last_message.sender.username}: ${chat.last_message.text.slice(0,50)}...` : "New Chat!"}
+                                    </div>
                                 </div>
                             </>
                         )

@@ -11,7 +11,7 @@ export const ChatProvider = ({ children, authUser }) => {
     const [selectedChat, setSelectedChat] = useState()
 
     const createChatClick = () => {
-        newChat(chatConfig, { title: 'New Chat' })
+        newChat(chatConfig, { title: '' })
     }
 
     const deleteChatClick = (chat) => {
@@ -37,8 +37,8 @@ export const ChatProvider = ({ children, authUser }) => {
             fb.firestore.collection(`chatUsers`).doc(authUser.uid).onSnapshot(snap => {
                 setChatConfig({
                     userSecret: authUser.uid,
-                    avatar: snap.data().avatar,
-                    userName: snap.data().displayName,
+                    avatar: snap?.data()?.avatar,
+                    userName: snap?.data()?.displayName,
                     projectID: "ff448d9d-cec9-4402-9e11-042257ec10b6"
                 })
             })
