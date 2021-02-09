@@ -73,7 +73,7 @@ const RailHeader = () => {
                             >
                                 {chatConfig.avatar ? (<Image src={chatConfig.avatar} avatar />) : (
                                     <div className="empty-avatar">
-                                        {chatConfig.userName[0].toUpperCase()}
+                                        {chatConfig?.userName[0]?.toUpperCase()}
                                     </div>
                                 )}
                                 <Icon corner name="camera" inverted circular />
