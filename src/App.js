@@ -14,26 +14,26 @@ const App = () => {
     const { authUser } = useAuth()
     const authResolved = useResolved(authUser)
     
-    useEffect(() => {
-        fetch("/api", {
-            method: "GET",
-            // headers: {
-            //     "Content-Type": "Application/json"
-            // },
-            // body: JSON.stringify({
-            //     displayName: "NOOGMAS",
-            //     userId: "7873o8usmUV53nDhuMLY98g66un2"
-            // })
-        }).then(() => {
-            console.log("done!")
-        }).catch((err) => {
-            console.log(err)
-        })
-        console.log(authResolved, authUser)
-        if(authResolved) {
-            history.push(!!authUser ? "/" : "/login")
-        }
-    }, [authUser, authResolved, history])
+    // useEffect(() => {
+    //     fetch("/api", {
+    //         method: "GET",
+    //         // headers: {
+    //         //     "Content-Type": "Application/json"
+    //         // },
+    //         // body: JSON.stringify({
+    //         //     displayName: "NOOGMAS",
+    //         //     userId: "7873o8usmUV53nDhuMLY98g66un2"
+    //         // })
+    //     }).then(() => {
+    //         console.log("done!")
+    //     }).catch((err) => {
+    //         console.log(err)
+    //     })
+    //     console.log(authResolved, authUser)
+    //     if(authResolved) {
+    //         history.push(!!authUser ? "/" : "/login")
+    //     }
+    // }, [authUser, authResolved, history])
 
     return (
         <div className="app">

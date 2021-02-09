@@ -13,7 +13,7 @@ const Signup = () => {
         fb.auth.createUserWithEmailAndPassword(email, password)
             .then((res) => {
                 if(res?.user?.uid) {
-                    fetch("./api/createUser", {
+                    fetch("/api/createUser", {
                         method: "POST",
                         headers: {
                             "Content-Type": "Application/json"
