@@ -6,7 +6,7 @@ import { useChat } from '../context/ChatContext'
 
 const Chat = () => {
 
-    const { myChats, setMyChats, chatConfig, selectedChat } = useChat()
+    const { myChats, setMyChats, chatConfig, selectedChat, setSelectedChat,selectChatClick } = useChat()
 
     return (
         <>
@@ -15,10 +15,20 @@ const Chat = () => {
                 <ChatEngine
                     hideUI={true}
                     userName={chatConfig.userName}
-                    projectId={chatConfig.projectId}
+                    projectID={chatConfig.projectID}
                     userSecret={chatConfig.userSecret}
                     onConnect={() => {
                         getChats(chatConfig, setMyChats)
+                    }}
+                    onNewChat={(chat) => {
+                        if(chat.admin.username === chatConfig.userName) selectChatClick(chat)
+                        setMyChats([...myChats, chat].sort((a, b) => a.id - b.id))
+                        console.log("chat added.")
+                    }}
+                    onDeleteChat={(chat) => {
+                        if(selectedChat?.id === chat.id) setSelectedChat(null)
+                        setMyChats(myChats.filter(c => c.id !== chat.id).sort((a, b) => a.id - b.id))
+                        console.log("chat deleted.")
                     }}
                 />
             )}

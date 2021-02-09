@@ -11,7 +11,7 @@ export const ChatProvider = ({ children, authUser }) => {
     const [selectedChat, setSelectedChat] = useState()
 
     const createChatClick = () => {
-        newChat(chatConfig, { title: '' })
+        newChat(chatConfig, { title: 'New Chat' })
     }
 
     const deleteChatClick = (chat) => {
