@@ -3,6 +3,7 @@ import { Loader } from 'semantic-ui-react'
 import { useChat } from '../context/ChatContext'
 import useResolved from "../hooks/useResolved"
 import ChatList from './ChatList'
+import RailHeader from './RailHeader'
 
 const LeftRail = () => {
 
@@ -11,6 +12,7 @@ const LeftRail = () => {
 
     return (
         <div className="left-rail">
+            <RailHeader />
             {chatResolved ? 
                 <>
                     {myChats.length ? 
